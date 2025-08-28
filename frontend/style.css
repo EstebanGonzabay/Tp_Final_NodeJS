@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.filters {
+    padding: 20px;
+    background: #f8f9fa;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filters input, .filters select {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: white;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+}
+
+.product-name {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.product-category {
+    background: #4facfe;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+}
+
+.product-description {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.product-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.detail-item {
+    text-align: center;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.detail-label {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.detail-value {
+    font-weight: bold;
+    color: #333;
+}
+
+.product-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-primary {
+    background: #4facfe;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #3b99fd;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4facfe;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+.spinner-small {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    background: #fee;
+    color: #c33;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px;
+    text-align: center;
+    border-left: 4px solid #c33;
+}
+
+.success-message {
+    background: #efe;
+    color: #363;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px;
+    text-align: center;
+    border-left: 4px solid #363;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters {
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+}
